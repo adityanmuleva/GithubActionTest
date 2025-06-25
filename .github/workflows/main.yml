@@ -15,10 +15,10 @@ jobs:
 
     - name: Set up SSH
       run: |
-        install -m 700 -d ~/.ssh
-        echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+        install -m 700 -d $HOME/.ssh
+        echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > $HOME/.ssh/id_rsa
+        chmod 600 $HOME/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> $HOME/.ssh/known_hosts
 
     - name: Deploy to EC2
       run: |
